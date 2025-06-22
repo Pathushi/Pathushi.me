@@ -8,65 +8,140 @@
     body {
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0; padding: 0;
-      background: #f4f8fb;
+      min-height: 100vh;
+      background: linear-gradient(120deg, #f4f8fb 0%, #e0f7fa 100%);
+      background-attachment: fixed;
       color: #222;
       text-align: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: -30%;
+      left: -30%;
+      width: 160vw;
+      height: 160vh;
+      background: radial-gradient(circle at 60% 40%, #0ba87e33 0%, #1e3c7211 100%);
+      z-index: 0;
+      pointer-events: none;
+      animation: bgmove 18s linear infinite alternate;
+    }
+    @keyframes bgmove {
+      0% { transform: scale(1) translateY(0); }
+      100% { transform: scale(1.1) translateY(30px); }
     }
     header {
       background: linear-gradient(90deg, #0ba87e 60%, #1e3c72 100%);
       color: white;
       padding: 2.5rem 1rem 2rem 1rem;
-      box-shadow: 0 2px 8px rgba(30,60,114,0.07);
+      box-shadow: 0 2px 16px rgba(30,60,114,0.10);
       position: relative;
+      z-index: 1;
     }
     .profile-img {
-      width: 110px;
-      height: 110px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid #fff;
-      box-shadow: 0 2px 8px rgba(30,60,114,0.12);
-      margin-bottom: 1rem;
-      background: #e0e0e0;
+      border: 5px solid transparent;
+      background: linear-gradient(135deg, #0ba87e 60%, #1e3c72 100%);
+      background-clip: padding-box;
+      box-shadow: 0 4px 18px rgba(30,60,114,0.18);
+      margin-bottom: 1.1rem;
       display: inline-block;
+      transition: box-shadow 0.3s;
+    }
+    .profile-img:hover {
+      box-shadow: 0 8px 32px rgba(30,60,114,0.25);
     }
     h1 {
-      font-size: 2.3rem;
+      font-size: 2.5rem;
       margin: 0.5rem 0 0.2rem 0;
-      letter-spacing: 1px;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      text-shadow: 0 2px 8px #1e3c7233;
     }
     h2 {
       color: #0ba87e;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       margin-top: 0;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.5px;
+      margin-bottom: 1.3rem;
+      letter-spacing: 0.7px;
+      font-weight: 600;
+      text-shadow: 0 1px 4px #0ba87e11;
     }
     .subtitle {
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       margin-top: 0.2rem;
-      letter-spacing: 0.2px;
+      letter-spacing: 0.3px;
+      font-weight: 400;
+      opacity: 0.96;
+    }
+    .divider {
+      width: 70px;
+      height: 4px;
+      background: linear-gradient(90deg, #0ba87e 60%, #1e3c72 100%);
+      border-radius: 2px;
+      margin: 1.5rem auto 0.5rem auto;
+      opacity: 0.85;
     }
     section {
-      max-width: 700px;
-      margin: 2.5rem auto;
+      max-width: 720px;
+      margin: 2.7rem auto;
       background: #fff;
-      padding: 2.2rem 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 18px rgba(30,60,114,0.08);
+      padding: 2.3rem 2.1rem;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px rgba(30,60,114,0.10), 0 1.5px 8px #0ba87e11;
       text-align: left;
+      position: relative;
+      z-index: 1;
+      transition: box-shadow 0.2s;
     }
-    ul {
-      padding-left: 1.2rem;
+    section:hover {
+      box-shadow: 0 8px 40px rgba(30,60,114,0.13), 0 2px 12px #0ba87e22;
     }
-    li {
-      margin-bottom: 1.1rem;
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-left: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .project-card {
+      background: linear-gradient(100deg, #f4f8fb 80%, #e0f7fa 100%);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px #0ba87e11;
+      padding: 1.2rem 1.3rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      border-left: 5px solid #0ba87e;
+      position: relative;
+    }
+    .project-card:hover {
+      box-shadow: 0 6px 24px #0ba87e22;
+      transform: translateY(-4px) scale(1.015);
+      border-left: 5px solid #1e3c72;
+    }
+    .project-title {
+      font-weight: 600;
+      color: #1e3c72;
+      font-size: 1.13rem;
+      margin-bottom: 0.2rem;
+      letter-spacing: 0.2px;
+    }
+    .project-desc {
+      color: #333;
+      font-size: 1.01rem;
       line-height: 1.6;
+      margin: 0;
     }
     a {
       color: #0ba87e;
       text-decoration: none;
       transition: color 0.2s;
+      font-weight: 500;
     }
     a:hover {
       color: #1e3c72;
@@ -91,21 +166,53 @@
       margin-right: 0.5rem;
       font-size: 1.2rem;
       color: #0ba87e;
+      transition: color 0.2s;
+    }
+    .contact-list a:hover .contact-icon {
+      color: #1e3c72;
     }
     footer {
       margin: 2.5rem 0 1.2rem 0;
       color: #888;
-      font-size: 0.98rem;
+      font-size: 1.01rem;
       letter-spacing: 0.2px;
+      z-index: 1;
+      position: relative;
+    }
+    @media (max-width: 800px) {
+      section {
+        max-width: 97vw;
+        padding: 1.3rem 0.5rem;
+      }
     }
     @media (max-width: 600px) {
+      .profile-img {
+        width: 80px;
+        height: 80px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+      h2 {
+        font-size: 1.1rem;
+      }
+      .divider {
+        width: 40px;
+        height: 3px;
+      }
       section {
-        padding: 1.2rem 0.7rem;
+        padding: 1.1rem 0.2rem;
       }
       .contact-list {
         flex-direction: column;
         gap: 0.7rem;
         align-items: flex-start;
+      }
+      .projects-list {
+        gap: 1rem;
+      }
+      .project-card {
+        padding: 0.8rem 0.7rem;
       }
     }
   </style>
@@ -118,8 +225,9 @@
     <img src="profile.jpg" alt="Profile Photo" class="profile-img" onerror="this.style.display='none'"/>
     <h1>Pathushi Munasinghe</h1>
     <p class="subtitle">
-      Software Engineering Undergraduate | Tech Enthusiast
+      Software Engineering Undergraduate &nbsp;|&nbsp; Tech Enthusiast
     </p>
+    <div class="divider"></div>
   </header>
 
   <section>
@@ -131,18 +239,24 @@
 
   <section>
     <h2>Projects</h2>
-    <ul>
-      <li>
-        <strong>Urban Food E-Commerce Platform</strong><br>
-        Developed a scalable web application for urban food delivery and ordering, utilizing React for the frontend, Spring Boot for the backend, and Oracle Database. Implemented secure authentication, real-time order tracking, and an intuitive user interface.
+    <ul class="projects-list">
+      <li class="project-card">
+        <div class="project-title">Urban Food E-Commerce Platform</div>
+        <div class="project-desc">
+          Developed a scalable web application for urban food delivery and ordering, utilizing React for the frontend, Spring Boot for the backend, and Oracle Database. Implemented secure authentication, real-time order tracking, and an intuitive user interface.
+        </div>
       </li>
-      <li>
-        <strong>Conveyor Belt with Robot Arm</strong><br>
-        Engineered a robotic module integrating a conveyor belt and robotic arm, programmed in C++ and controlled via Arduino. Enabled automated sorting and object manipulation for industrial applications.
+      <li class="project-card">
+        <div class="project-title">Conveyor Belt with Robot Arm</div>
+        <div class="project-desc">
+          Engineered a robotic module integrating a conveyor belt and robotic arm, programmed in C++ and controlled via Arduino. Enabled automated sorting and object manipulation for industrial applications.
+        </div>
       </li>
-      <li>
-        <strong>Air Conditioning Contract Company Management System</strong><br>
-        Designed and built a Windows Forms application in C# to streamline contract, client, and service schedule management for an air conditioning service provider.
+      <li class="project-card">
+        <div class="project-title">Air Conditioning Contract Company Management System</div>
+        <div class="project-desc">
+          Designed and built a Windows Forms application in C# to streamline contract, client, and service schedule management for an air conditioning service provider.
+        </div>
       </li>
     </ul>
   </section>
