@@ -4,289 +4,268 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pathushi Munasinghe | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
   <style>
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0; padding: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f6f9;
       min-height: 100vh;
-      background: linear-gradient(120deg, #f4f8fb 0%, #e0f7fa 100%);
-      background-attachment: fixed;
-      color: #222;
-      text-align: center;
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       overflow-x: hidden;
     }
-    body::before {
-      content: "";
-      position: fixed;
-      top: -30%;
-      left: -30%;
-      width: 160vw;
-      height: 160vh;
-      background: radial-gradient(circle at 60% 40%, #0ba87e33 0%, #1e3c7211 100%);
-      z-index: 0;
-      pointer-events: none;
-      animation: bgmove 18s linear infinite alternate;
-      opacity: 0.8;
+    /* --- First Section --- */
+    .main-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 90vw;
+      max-width: 1100px;
+      min-height: 80vh;
+      background: #fff;
+      border-radius: 40px;
+      box-shadow: 0 8px 40px rgba(30,60,114,0.10);
+      position: relative;
+      margin: 2rem 0;
+      padding: 0;
     }
-    body::after {
-      content: "";
-      position: fixed;
-      right: -20vw;
-      bottom: -20vh;
-      width: 60vw;
-      height: 60vh;
-      background: radial-gradient(circle at 80% 80%, #1e3c7233 0%, #0ba87e11 100%);
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.5;
-      animation: bgmove2 22s linear infinite alternate;
+    .profile-section {
+      flex: 1 1 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 300px;
+      background: none;
     }
-    @keyframes bgmove {
-      0% { transform: scale(1) translateY(0); }
-      100% { transform: scale(1.1) translateY(30px); }
+    .profile-img-circle {
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 12px solid #7b5c3b;
+      box-shadow: 0 8px 32px #7b5c3b22;
+      background: #f7f6f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    @keyframes bgmove2 {
-      0% { transform: scale(1) translateY(0); }
-      100% { transform: scale(1.08) translateY(-20px); }
+    .profile-img-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .info-section {
+      flex: 2 1 0;
+      padding: 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 300px;
+    }
+    .title-main {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #6d4c2c;
+      margin-bottom: 0.5rem;
+    }
+    .name-main {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #6d4c2c;
+      margin-bottom: 0.5rem;
+    }
+    .role-main {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      background: #7b5c3b;
+      border-radius: 30px;
+      padding: 0.4rem 1.3rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      box-shadow: 0 2px 8px #7b5c3b22;
+      letter-spacing: 1px;
+    }
+    .intro-main {
+      font-size: 1rem;
+      color: #444;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    /* --- Content Sections --- */
+    header, section, footer {
+      width: 90%;
+      max-width: 1000px;
+      margin: 1.5rem auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
     header {
-      background: linear-gradient(90deg, #0ba87e 60%, #1e3c72 100%);
-      color: white;
-      padding: 2.5rem 1rem 2rem 1rem;
-      box-shadow: 0 2px 16px rgba(30,60,114,0.10);
-      position: relative;
-      z-index: 1;
-      animation: fadein 1.2s;
-    }
-    @keyframes fadein {
-      from { opacity: 0; transform: translateY(-30px);}
-      to { opacity: 1; transform: translateY(0);}
+      text-align: center;
     }
     .profile-img {
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid transparent;
-      background: linear-gradient(135deg, #0ba87e 60%, #1e3c72 100%);
-      background-clip: padding-box;
-      box-shadow: 0 4px 18px rgba(30,60,114,0.18), 0 0 0 8px #0ba87e22;
-      margin-bottom: 1.1rem;
-      display: inline-block;
-      transition: box-shadow 0.3s;
-      animation: glow 2.5s infinite alternate;
-    }
-    @keyframes glow {
-      0% { box-shadow: 0 4px 18px rgba(30,60,114,0.18), 0 0 0 8px #0ba87e22; }
-      100% { box-shadow: 0 8px 32px rgba(30,60,114,0.25), 0 0 0 16px #0ba87e33; }
-    }
-    .profile-img:hover {
-      box-shadow: 0 8px 32px rgba(30,60,114,0.25), 0 0 0 16px #0ba87e44;
+      margin-bottom: 1rem;
+      border: 5px solid #7b5c3b44;
     }
     h1 {
-      font-size: 2.5rem;
-      margin: 0.5rem 0 0.2rem 0;
-      letter-spacing: 1.2px;
-      font-weight: 700;
-      text-shadow: 0 2px 8px #1e3c7233;
-    }
-    h2 {
-      color: #0ba87e;
-      font-size: 1.6rem;
-      margin-top: 0;
-      margin-bottom: 1.3rem;
-      letter-spacing: 0.7px;
-      font-weight: 600;
-      text-shadow: 0 1px 4px #0ba87e11;
+      margin: 0;
+      font-size: 1.8rem;
+      color: #6d4c2c;
     }
     .subtitle {
-      font-size: 1.18rem;
-      margin-top: 0.2rem;
-      letter-spacing: 0.3px;
-      font-weight: 400;
-      opacity: 0.96;
+      color: #555;
+      margin: 0.5rem 0 1rem;
     }
     .divider {
-      width: 90px;
-      height: 5px;
-      background: linear-gradient(90deg, #0ba87e 60%, #1e3c72 100%);
+      width: 60px;
+      height: 4px;
+      background: #7b5c3b;
+      margin: 0 auto;
       border-radius: 3px;
-      margin: 1.5rem auto 0.5rem auto;
-      opacity: 0.92;
-      box-shadow: 0 2px 8px #0ba87e22;
-      transition: width 0.3s;
     }
-    section {
-      max-width: 720px;
-      margin: 2.7rem auto;
-      background: #fff;
-      padding: 2.3rem 2.1rem;
-      border-radius: 18px;
-      box-shadow: 0 4px 32px rgba(30,60,114,0.10), 0 1.5px 8px #0ba87e11;
-      text-align: left;
-      position: relative;
-      z-index: 1;
-      transition: box-shadow 0.2s, transform 0.2s;
-      animation: fadeinSection 1.2s;
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      color: #6d4c2c;
     }
-    @keyframes fadeinSection {
-      from { opacity: 0; transform: translateY(40px);}
-      to { opacity: 1; transform: translateY(0);}
+    section p {
+      color: #444;
+      line-height: 1.6;
     }
-    section:hover {
-      box-shadow: 0 8px 40px rgba(30,60,114,0.13), 0 2px 12px #0ba87e22;
-      transform: translateY(-2px) scale(1.01);
-    }
-    .projects-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
+
+    /* --- Skills --- */
+    ul.skills {
+      list-style: none;
       padding-left: 0;
       margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    ul.skills li {
+      background: #f7f6f9;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 0.95rem;
+    }
+
+    /* --- Projects --- */
+    .projects-list {
       list-style: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
     .project-card {
-      background: linear-gradient(100deg, #f4f8fb 80%, #e0f7fa 100%);
-      border-radius: 14px;
-      box-shadow: 0 2px 12px #0ba87e11;
-      padding: 1.2rem 1.3rem;
-      transition: box-shadow 0.2s, transform 0.2s, border-left 0.2s;
-      border-left: 6px solid #0ba87e;
-      position: relative;
-      opacity: 0;
-      animation: fadeinCard 1.2s forwards;
-    }
-    .project-card:nth-child(1) { animation-delay: 0.2s; }
-    .project-card:nth-child(2) { animation-delay: 0.4s; }
-    .project-card:nth-child(3) { animation-delay: 0.6s; }
-    @keyframes fadeinCard {
-      from { opacity: 0; transform: translateY(30px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
-    .project-card:hover {
-      box-shadow: 0 8px 32px #0ba87e22;
-      transform: translateY(-6px) scale(1.025);
-      border-left: 6px solid #1e3c72;
+      background: #f7f6f9;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
     .project-title {
       font-weight: 600;
-      color: #1e3c72;
-      font-size: 1.15rem;
-      margin-bottom: 0.2rem;
-      letter-spacing: 0.2px;
+      margin-bottom: 0.3rem;
+      color: #6d4c2c;
     }
     .project-desc {
-      color: #333;
-      font-size: 1.04rem;
-      line-height: 1.6;
-      margin: 0;
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.5;
     }
-    a {
-      color: #0ba87e;
-      text-decoration: none;
-      transition: color 0.2s;
-      font-weight: 500;
-    }
-    a:hover {
-      color: #1e3c72;
-      text-decoration: underline;
-    }
+
+    /* --- Contact --- */
     .contact-list {
       list-style: none;
-      padding: 0;
-      margin: 0.5rem 0 0 0;
+      padding-left: 0;
       display: flex;
-      gap: 2.5rem;
-      justify-content: flex-start;
-      align-items: center;
+      flex-direction: column;
+      gap: 0.8rem;
     }
     .contact-list li {
       display: flex;
       align-items: center;
-      font-size: 1.13rem;
-      margin: 0;
-      transition: transform 0.2s;
-    }
-    .contact-list li:hover {
-      transform: scale(1.07);
     }
     .contact-icon {
-      margin-right: 0.7rem;
-      font-size: 1.5rem;
+      margin-right: 0.6rem;
+      font-size: 1.3rem;
       color: #0ba87e;
-      transition: color 0.2s;
-      filter: drop-shadow(0 2px 4px #0ba87e22);
     }
-    .contact-list a:hover .contact-icon {
-      color: #1e3c72;
-    }
+
     footer {
-      margin: 2.5rem 0 1.2rem 0;
-      color: #888;
-      font-size: 1.04rem;
-      letter-spacing: 0.2px;
-      z-index: 1;
-      position: relative;
-      opacity: 0.95;
-      animation: fadein 1.2s;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      background: none;
+      box-shadow: none;
     }
-    @media (max-width: 800px) {
-      section {
-        max-width: 97vw;
-        padding: 1.3rem 0.5rem;
-      }
-    }
-    @media (max-width: 600px) {
-      .profile-img {
-        width: 80px;
-        height: 80px;
-      }
-      h1 {
-        font-size: 1.5rem;
-      }
-      h2 {
-        font-size: 1.1rem;
-      }
-      .divider {
-        width: 40px;
-        height: 3px;
-      }
-      section {
-        padding: 1.1rem 0.2rem;
-      }
-      .contact-list {
+
+    /* --- Responsive --- */
+    @media (max-width: 768px) {
+      .main-container {
         flex-direction: column;
-        gap: 0.7rem;
-        align-items: flex-start;
+        text-align: center;
       }
-      .projects-list {
-        gap: 1rem;
-      }
-      .project-card {
-        padding: 0.8rem 0.7rem;
+      .info-section {
+        padding: 1.5rem;
+        align-items: center;
       }
     }
   </style>
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
 
+  <!-- Intro Card -->
+  <div class="main-container">
+    <div class="profile-section">
+      <div class="profile-img-circle">
+        <img src="https://media.licdn.com/dms/image/v2/D5603AQFUZ5-MeERdfQ/profile-displayphoto-shrink_400_400/B56ZRy3CbsHwAk-/0/1737093819233?e=2147483647&v=beta&t=nEtTmoutsWGW4bqduCZOj6oYrBK9GfPRiFlW2Mxw0JQ" alt="Profile Photo"/>
+      </div>
+    </div>
+    <div class="info-section">
+      <div class="title-main">Professional Portfolio</div>
+      <div class="name-main">Pathushi Munasinghe</div>
+      <div class="role-main">Software Engineering Undergraduate</div>
+      <div class="intro-main">
+        Welcome to my portfolio. Here, you'll find a curated selection of my work and projects, reflecting my passion for software engineering, problem-solving, and technology innovation.
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
   <header>
-    <img src="Profile Pic.jpg" alt="Profile Photo" class="profile-img" onerror="this.style.display='none'"/>
+    <img src="Profile Pic.jpg" alt="Profile Photo" class="profile-img"/>
     <h1>Pathushi Munasinghe</h1>
-    <p class="subtitle">
-      Software Engineering Undergraduate &nbsp;|&nbsp; Tech Enthusiast
-    </p>
+    <p class="subtitle">Software Engineering Undergraduate | Technology Enthusiast</p>
     <div class="divider"></div>
   </header>
 
   <section>
     <h2>About Me</h2>
     <p>
-      I am a second-year undergraduate at the National Institute of Business Management, specializing in software engineering. My interests span full-stack development, robotics, and IoT. I am proficient in technologies such as REST APIs, React, Spring Boot, JavaScript, C#, C, Java, and C++. I have contributed to several projects, both independently and collaboratively, demonstrating strong problem-solving and teamwork skills.
+      I am a second-year undergraduate at the National Institute of Business Management, specializing in Software Engineering. My professional interests include full-stack development, robotics, and IoT. Proficient in REST APIs, React, Spring Boot, JavaScript, Java, C++, and C#, I enjoy building solutions that are both robust and user-focused.
     </p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li><strong>Languages:</strong> Java, C++, C#, JavaScript, C</li>
+      <li><strong>Frameworks:</strong> React, Spring Boot, .NET</li>
+      <li><strong>Databases:</strong> Oracle, SQL Server</li>
+      <li><strong>Tools:</strong> Git, Arduino, Windows Forms</li>
+      <li><strong>Areas:</strong> Full-Stack Development, Robotics, IoT</li>
+    </ul>
   </section>
 
   <section>
@@ -294,21 +273,15 @@
     <ul class="projects-list">
       <li class="project-card">
         <div class="project-title">Urban Food E-Commerce Platform</div>
-        <div class="project-desc">
-          Developed a scalable web application for urban food delivery and ordering, utilizing React for the frontend, Spring Boot for the backend, and Oracle Database. Implemented secure authentication, real-time order tracking, and an intuitive user interface.
-        </div>
+        <div class="project-desc">Developed a scalable web application for urban food delivery and ordering, utilizing React for the frontend, Spring Boot for the backend, and Oracle Database.</div>
       </li>
       <li class="project-card">
-        <div class="project-title">Conveyor Belt with Robot Arm</div>
-        <div class="project-desc">
-          Engineered a robotic module integrating a conveyor belt and robotic arm, programmed in C++ and controlled via Arduino. Enabled automated sorting and object manipulation for industrial applications.
-        </div>
+        <div class="project-title">Conveyor Belt with Robotic Arm</div>
+        <div class="project-desc">Engineered an automated module integrating a conveyor belt and robotic arm, programmed in C++ and controlled via Arduino.</div>
       </li>
       <li class="project-card">
-        <div class="project-title">Air Conditioning Contract Company Management System</div>
-        <div class="project-desc">
-          Designed and built a Windows Forms application in C# to streamline contract, client, and service schedule management for an air conditioning service provider.
-        </div>
+        <div class="project-title">Air Conditioning Contract Management System</div>
+        <div class="project-desc">Designed and developed a Windows Forms application in C# to streamline client and service schedule management for an AC provider.</div>
       </li>
     </ul>
   </section>
@@ -324,11 +297,15 @@
         <span class="contact-icon"><i class="fab fa-github"></i></span>
         <a href="https://github.com/Pathushi" target="_blank">github.com/Pathushi</a>
       </li>
+      <li>
+        <span class="contact-icon"><i class="fab fa-linkedin"></i></span>
+        <a href="https://www.linkedin.com/in/pathushi-munasinghe" target="_blank">linkedin.com/in/pathushi-munasinghe</a>
+      </li>
     </ul>
   </section>
 
   <footer>
-    &copy; 2025 Pathushi Munasinghe &mdash; All rights reserved.
+    &copy; 2025 Pathushi Munasinghe — All rights reserved.
   </footer>
 
 </body>
