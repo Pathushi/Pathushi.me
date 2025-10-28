@@ -5,18 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pathushi Munasinghe | Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --coffee: #7b5c3b;
+      --light-coffee: #b88a5a;
+      --bg: #f8f6f3;
+      --text: #3c2f26;
+    }
+
     body {
       margin: 0; padding: 0;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f7f6f9;
-      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
       overflow-x: hidden;
     }
-    /* --- First Section --- */
+
+    /* --- Intro Card --- */
     .main-container {
       display: flex;
       align-items: center;
@@ -24,32 +33,39 @@
       width: 90vw;
       max-width: 1100px;
       min-height: 80vh;
-      background: #fff;
+      background: rgba(255, 255, 255, 0.75);
       border-radius: 40px;
       box-shadow: 0 8px 40px rgba(30,60,114,0.10);
-      position: relative;
-      margin: 2rem 0;
+      margin: 3rem 0 2rem;
       padding: 0;
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1.5s ease;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .profile-section {
-      flex: 1 1 0;
+      flex: 1;
       display: flex;
-      align-items: center;
       justify-content: center;
-      min-width: 300px;
-      background: none;
+      align-items: center;
+      padding: 2rem;
     }
+
     .profile-img-circle {
       width: 260px;
       height: 260px;
       border-radius: 50%;
       overflow: hidden;
-      border: 12px solid #7b5c3b;
+      border: 10px solid var(--coffee);
       box-shadow: 0 8px 32px #7b5c3b22;
-      background: #f7f6f9;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      transition: transform 0.4s ease;
+    }
+    .profile-img-circle:hover {
+      transform: scale(1.05);
     }
     .profile-img-circle img {
       width: 100%;
@@ -57,89 +73,79 @@
       object-fit: cover;
       border-radius: 50%;
     }
+
     .info-section {
-      flex: 2 1 0;
+      flex: 2;
       padding: 2rem 3rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       min-width: 300px;
     }
-    .title-main {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #6d4c2c;
-      margin-bottom: 0.5rem;
-    }
+
     .name-main {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       font-weight: 700;
-      color: #6d4c2c;
+      color: var(--coffee);
       margin-bottom: 0.5rem;
     }
+
     .role-main {
       font-size: 1.1rem;
       font-weight: 600;
       color: #fff;
-      background: #7b5c3b;
+      background: linear-gradient(135deg, var(--coffee), var(--light-coffee));
       border-radius: 30px;
-      padding: 0.4rem 1.3rem;
-      margin-bottom: 1rem;
+      padding: 0.5rem 1.4rem;
+      margin-bottom: 1.2rem;
       display: inline-block;
-      box-shadow: 0 2px 8px #7b5c3b22;
-      letter-spacing: 1px;
+      box-shadow: 0 3px 10px rgba(123, 92, 59, 0.3);
+      letter-spacing: 0.5px;
     }
+
     .intro-main {
       font-size: 1rem;
       color: #444;
       max-width: 520px;
-      line-height: 1.6;
+      line-height: 1.8;
     }
 
     /* --- Content Sections --- */
-    header, section, footer {
+    section {
       width: 90%;
       max-width: 1000px;
       margin: 1.5rem auto;
       background: #fff;
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      border-radius: 25px;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease;
     }
-    header {
-      text-align: center;
+
+    section:hover {
+      transform: translateY(-4px);
     }
-    .profile-img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      border: 5px solid #7b5c3b44;
-    }
-    h1 {
-      margin: 0;
-      font-size: 1.8rem;
-      color: #6d4c2c;
-    }
-    .subtitle {
-      color: #555;
-      margin: 0.5rem 0 1rem;
-    }
-    .divider {
-      width: 60px;
-      height: 4px;
-      background: #7b5c3b;
-      margin: 0 auto;
-      border-radius: 3px;
-    }
+
     h2 {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      color: #6d4c2c;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: var(--coffee);
+      position: relative;
     }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: var(--coffee);
+      border-radius: 3px;
+      margin-top: 5px;
+    }
+
     section p {
       color: #444;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* --- Skills --- */
@@ -151,12 +157,20 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
+
     ul.skills li {
       background: #f7f6f9;
       padding: 0.6rem 1rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
       font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    ul.skills li:hover {
+      background: var(--coffee);
+      color: #fff;
+      transform: translateY(-3px);
     }
 
     /* --- Projects --- */
@@ -167,21 +181,32 @@
       flex-direction: column;
       gap: 1rem;
     }
+
     .project-card {
-      background: #f7f6f9;
-      padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      background: #f8f8f8;
+      padding: 1.2rem 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
     }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      background: #fff6f1;
+      box-shadow: 0 8px 20px rgba(123, 92, 59, 0.15);
+    }
+
     .project-title {
       font-weight: 600;
+      color: var(--coffee);
       margin-bottom: 0.3rem;
-      color: #6d4c2c;
+      font-size: 1.05rem;
     }
+
     .project-desc {
       font-size: 0.95rem;
       color: #444;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     /* --- Contact --- */
@@ -192,22 +217,35 @@
       flex-direction: column;
       gap: 0.8rem;
     }
+
     .contact-list li {
       display: flex;
       align-items: center;
+      font-size: 1rem;
     }
+
     .contact-icon {
-      margin-right: 0.6rem;
+      margin-right: 0.8rem;
       font-size: 1.3rem;
-      color: #0ba87e;
+      color: var(--coffee);
+    }
+
+    a {
+      color: var(--coffee);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: var(--light-coffee);
+      text-decoration: underline;
     }
 
     footer {
       text-align: center;
       color: #666;
       font-size: 0.9rem;
-      background: none;
-      box-shadow: none;
+      margin: 2rem 0;
     }
 
     /* --- Responsive --- */
@@ -215,10 +253,14 @@
       .main-container {
         flex-direction: column;
         text-align: center;
+        padding: 2rem 1rem;
       }
       .info-section {
         padding: 1.5rem;
         align-items: center;
+      }
+      .name-main {
+        font-size: 2.2rem;
       }
     }
   </style>
@@ -233,7 +275,6 @@
       </div>
     </div>
     <div class="info-section">
-      <!-- <div class="title-main">Professional Portfolio</div> -->
       <div class="name-main">Pathushi Munasinghe</div>
       <div class="role-main">Software Engineering Undergraduate | Technology Enthusiast</div>
       <div class="intro-main">
@@ -245,7 +286,9 @@
   <section>
     <h2>About Me</h2>
     <p>
-      Second-year Software Engineering student seeking an internship to gain hands-on experience. Eager to contribute to real-world projects, collaborate with teams, apply problem solving skills in real world AI projects and grow professionally in a dynamic tech environment while expanding expertise in new frameworks.
+      I'm a third-year undergraduate pursuing a BSc (Hons) in Computing at Coventry University. Currently, I'm working as a Software Engineering Intern at PragICTS, where I continue to strengthen my technical and problem-solving skills.
+
+As a passionate technology enthusiast, I’m driven by innovation and creativity. I enjoy blending logic with imagination to craft impactful software solutions. Alongside my studies and internship, I’m also building my own startup, exploring ways to turn creative ideas into real-world technologies.
     </p>
   </section>
 
@@ -254,9 +297,9 @@
     <h3 style="margin-top:0.5rem;">Technical Skills</h3>
     <ul class="skills">
       <li><strong>Languages:</strong> Java, C#, C++, SQL, PL/SQL, JavaScript, HTML, CSS, Python</li>
-      <li><strong>Frameworks &amp; Tools:</strong> React, Spring Boot, Bootstrap, REST APIs, GitHub Actions</li>
+      <li><strong>Frameworks & Tools:</strong> React, Spring Boot, Bootstrap, REST APIs, GitHub Actions</li>
       <li><strong>Databases:</strong> Oracle, MongoDB, SQLite</li>
-      <li><strong>Concepts &amp; Methodologies:</strong> OOP, Agile, Scrum, Machine Learning Concepts</li>
+      <li><strong>Concepts:</strong> OOP, Agile, Scrum, Machine Learning</li>
     </ul>
     <h3 style="margin-top:1.5rem;">Soft Skills</h3>
     <ul class="skills">
@@ -268,102 +311,72 @@
   </section>
 
   <section>
-  <h2>Projects</h2>
-  <ul class="projects-list">
-
-    <li class="project-card">
-      <div class="project-title">Machine Learning - Productivity Loss Prediction System</div>
-      <div class="project-desc">
-        Trained a model using Random Forest (Python) to predict the productivity loss of social media users based on behavioral data.
-      </div>
-    </li>
-
-    <li class="project-card">
-      <div class="project-title">Locker Finder Tool</div>
-      <div class="project-desc">
-        Developed a locker finder system for an amusement park using queue, Dijkstra, Kruskal, and DFS algorithms in Java to efficiently allocate lockers.
-      </div>
-    </li>
-
-    <li class="project-card">
-      <div class="project-title">Urbanfood E-commerce Platform</div>
-      <div class="project-desc">
-        Developed a full-stack food sales platform using Spring Boot, Oracle DB, MongoDB, React, and JavaScript. Integrated REST APIs and managed data across relational and NoSQL databases.
-      </div>
-    </li>
-
-    <li class="project-card">
-      <div class="project-title">Air Conditioning Contact Company Management System</div>
-      <div class="project-desc">
-        Built a desktop application in C# for managing customer contacts, service scheduling, and billing.
-      </div>
-    </li>
-
-    <li class="project-card">
-      <div class="project-title">Robot Arm and Conveyor Belt System</div>
-      <div class="project-desc">
-        Programmed a microcontroller-based system in C++ to automate object sorting and placement.
-      </div>
-    </li>
-
-    <li class="project-card">
-      <div class="project-title">Smart Locker Management System</div>
-      <div class="project-desc">
-        Developing a smart locker system for universities and co-working spaces using IoT. Mobile app built with React Native, web app with React, backend with Python Django, and PostgreSQL + Firebase as databases.
-      </div>
-    </li>
-
-    <li class="project-card">
-      <div class="project-title">Machine Learning </div>
-      <div class="project-desc">
-        Training a model to predict diabetic patients.
-      </div>
-    </li>
-
-  </ul>
-</section>
+    <h2>Projects</h2>
+    <ul class="projects-list">
+      <li class="project-card"><div class="project-title">Machine Learning - Productivity Loss Prediction System</div><div class="project-desc">Trained a model using Random Forest (Python) to predict the productivity loss of social media users based on behavioral data.</div></li>
+      <li class="project-card"><div class="project-title">Locker Finder Tool</div><div class="project-desc">Developed a locker finder system for an amusement park using queue, Dijkstra, Kruskal, and DFS algorithms in Java to efficiently allocate lockers.</div></li>
+      <li class="project-card"><div class="project-title">Urbanfood E-commerce Platform</div><div class="project-desc">Developed a full-stack food sales platform using Spring Boot, Oracle DB, MongoDB, React, and JavaScript.</div></li>
+      <li class="project-card"><div class="project-title">Air Conditioning Contact Company Management System</div><div class="project-desc">Built a desktop application in C# for managing customer contacts, service scheduling, and billing.</div></li>
+      <li class="project-card"><div class="project-title">Robot Arm and Conveyor Belt System</div><div class="project-desc">Programmed a microcontroller-based system in C++ to automate object sorting and placement.</div></li>
+      <li class="project-card"><div class="project-title">Smart Locker Management System</div><div class="project-desc">Developing a smart locker system for universities and co-working spaces using IoT with React Native, React, Django, PostgreSQL, and Firebase.</div></li>
+      <li class="project-card"><div class="project-title">Machine Learning – Diabetic Prediction</div><div class="project-desc">Training a model to predict diabetic patients based on medical parameters.</div></li>
+    </ul>
+  </section>
 
   <section>
     <h2>Competitions</h2>
     <ul class="projects-list">
-      <li class="project-card">
-        <div class="project-title">Brainstorms – University of Moratuwa (Semi Finalist)</div>
-        <div class="project-desc">
-          Contributed to Aegle Platform, a healthcare solution for remote medical consultations.
-        </div>
-      </li>
-      <li class="project-card">
-        <div class="project-title">Idealize – University of Moratuwa (Semi Finalist)</div>
-        <div class="project-desc">
-          Developed a web application connecting startup founders with mentors and incubators.
-        </div>
-      </li>
-      <li class="project-card">
-        <div class="project-title">Neo Ventures – NIBM Startup Incubator Program (Ongoing)</div>
-        <div class="project-desc">
-          Designing an AI-powered travel platform to help users discover hidden destinations and plan trips.
-        </div>
-      </li>
+      <li class="project-card"><div class="project-title">Brainstorms – University of Moratuwa (Semi Finalist)</div><div class="project-desc">Contributed to Aegle Platform, a healthcare solution for remote medical consultations.</div></li>
+      <li class="project-card"><div class="project-title">Idealize – University of Moratuwa (Semi Finalist)</div><div class="project-desc">Developed a web app connecting startup founders with mentors and incubators.</div></li>
+      <li class="project-card"><div class="project-title">Neo Ventures – NIBM Startup Incubator (Ongoing)</div><div class="project-desc">Designing an AI-powered travel platform to help users discover hidden destinations.</div></li>
     </ul>
   </section>
 
   <section>
-    <h2>Contact</h2>
-    <ul class="contact-list">
-      <li>
-        <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-        <a href="mailto:pathushi.m@gmail.com">pathushi.m@gmail.com</a>
-      </li>
-      <li>
-        <span class="contact-icon"><i class="fab fa-github"></i></span>
-        <a href="https://github.com/Pathushi" target="_blank">github.com/Pathushi</a>
-      </li>
-      <li>
-        <span class="contact-icon"><i class="fab fa-linkedin"></i></span>
-        <a href="https://www.linkedin.com/in/pathushi-munasinghe-758800312/" target="_blank">linkedin.com/in/pathushi-munasinghe</a>
-      </li>
-    </ul>
-  </section>
+  <h2>Startup</h2>
+  <div class="project-card" style="background:#fffaf6; border-left:6px solid var(--coffee);">
+    <div class="project-title">GroveNex Tech</div>
+    <div class="project-desc">
+      <p>
+        I’m one of the Co-Founders of <strong>GroveNex Tech</strong> — an emerging technology startup focused on building innovative digital solutions that bridge creativity and technology.  
+        Our mission is to design intelligent, scalable, and user-centric systems that empower businesses and individuals through automation and AI-driven applications.
+      </p>
+      <p>
+        Currently, we are developing cutting-edge software products and exploring AI-powered platforms aimed at revolutionizing user experience and operational efficiency.
+      </p>
+      <p>
+        🔗 Visit us on LinkedIn:  
+        <a href="https://www.linkedin.com/company/grovenextech/" target="_blank">
+          linkedin.com/company/grovenextech
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <h2>Contact</h2>
+  <ul class="contact-list">
+    <li>
+      <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+      <a href="mailto:pathushi.m@gmail.com">pathushi.m@gmail.com</a>
+    </li>
+    <li>
+      <span class="contact-icon"><i class="fab fa-github"></i></span>
+      <a href="https://github.com/Pathushi" target="_blank">github.com/Pathushi</a>
+    </li>
+    <li>
+      <span class="contact-icon"><i class="fab fa-linkedin"></i></span>
+      <a href="https://www.linkedin.com/in/pathushi-munasinghe-758800312/" target="_blank">linkedin.com/in/pathushi-munasinghe</a>
+    </li>
+    <li>
+      <span class="contact-icon"><i class="fab fa-instagram"></i></span>
+      <a href="https://www.instagram.com/_pathushii_?igsh=MWdia2RpdXdzeTdzdw%3D%3D&utm_source=qr" target="_blank">instagram</a>
+    </li>
+  </ul>
+</section>
+
 
   <footer>
     &copy; 2025 Pathushi Munasinghe — All rights reserved.
