@@ -3,383 +3,225 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pathushi Munasinghe | Portfolio</title>
+  <title>Pathushi Munasinghe | Digital Journal</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --coffee: #7b5c3b;
-      --light-coffee: #b88a5a;
-      --bg: #f8f6f3;
-      --text: #3c2f26;
+      --coffee: #6f4e37;
+      --latte: #e6ccb2;
+      --paper: #fffcf5;
+      --accent: #d4a373;
+      --text: #2b2118;
     }
 
     body {
       margin: 0; padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: var(--bg);
+      background: #fdfaf5; /* Creamy paper background */
+      background-image: radial-gradient(#d4a37333 1px, transparent 1px);
+      background-size: 20px 20px; /* Subtle dot-grid paper feel */
       color: var(--text);
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-x: hidden;
     }
 
-    /* --- Intro Card --- */
+    /* --- Floating Badge --- */
+    .status-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--coffee);
+      color: white;
+      padding: 5px 15px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* --- Main Profile --- */
     .main-container {
+      position: relative;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
       width: 90vw;
-      max-width: 1100px;
-      min-height: 80vh;
-      background: rgba(255, 255, 255, 0.75);
-      border-radius: 40px;
-      box-shadow: 0 8px 40px rgba(30,60,114,0.10);
-      margin: 3rem 0 2rem;
-      padding: 0;
-      backdrop-filter: blur(8px);
-      animation: fadeIn 1.5s ease;
+      max-width: 900px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+      margin: 5rem 0 2rem;
+      padding: 3rem 1rem;
+      text-align: center;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .profile-section {
-      flex: 1;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem;
+    /* Washi Tape Effect */
+    .main-container::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      width: 120px;
+      height: 40px;
+      background: rgba(212, 163, 115, 0.6);
+      transform: rotate(-2deg);
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
     }
 
     .profile-img-circle {
-      width: 260px;
-      height: 260px;
+      width: 180px;
+      height: 180px;
       border-radius: 50%;
+      border: 5px solid white;
+      outline: 2px solid var(--latte);
       overflow: hidden;
-      border: 10px solid var(--coffee);
-      box-shadow: 0 8px 32px #7b5c3b22;
-      transition: transform 0.4s ease;
+      margin-bottom: 1.5rem;
+      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    .profile-img-circle:hover {
-      transform: scale(1.05);
-    }
-    .profile-img-circle img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
+    
+    .profile-img-circle:hover { transform: scale(1.1) rotate(3deg); }
+    .profile-img-circle img { width: 100%; height: 100%; object-fit: cover; }
 
-    .info-section {
-      flex: 2;
-      padding: 2rem 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-width: 300px;
-    }
+    .name-main { font-size: 2.5rem; color: var(--coffee); font-weight: 700; margin: 0; }
+    .handwritten { font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--accent); margin-top: -10px; }
 
-    .name-main {
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--coffee);
-      margin-bottom: 0.5rem;
-    }
-
-    .role-main {
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: #fff;
-      background: linear-gradient(135deg, var(--coffee), var(--light-coffee));
-      border-radius: 30px;
-      padding: 0.5rem 1.4rem;
-      margin-bottom: 1.2rem;
-      display: inline-block;
-      box-shadow: 0 3px 10px rgba(123, 92, 59, 0.3);
-      letter-spacing: 0.5px;
-    }
-
-    .intro-main {
-      font-size: 1rem;
-      color: #444;
-      max-width: 520px;
-      line-height: 1.8;
-    }
-
-    /* --- Content Sections --- */
+    /* --- Sections as Scrapbook Pages --- */
     section {
       width: 90%;
-      max-width: 1000px;
-      margin: 1.5rem auto;
-      background: #fff;
-      border-radius: 25px;
-      padding: 2rem 2.5rem;
-      box-shadow: 0 6px 25px rgba(0,0,0,0.06);
-      transition: transform 0.3s ease;
-    }
-
-    section:hover {
-      transform: translateY(-4px);
+      max-width: 800px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2.5rem;
+      border-radius: 2px;
+      box-shadow: 2px 2px 15px rgba(0,0,0,0.05);
+      position: relative;
+      border-left: 5px solid var(--latte);
     }
 
     h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
+      font-size: 1.8rem;
       color: var(--coffee);
-      position: relative;
+      border-bottom: 2px dashed var(--latte);
+      display: inline-block;
+      margin-bottom: 1.5rem;
     }
 
-    h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 3px;
-      background: var(--coffee);
-      border-radius: 3px;
-      margin-top: 5px;
+    /* --- Project Polaroids --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
     }
 
-    section p {
-      color: #444;
-      line-height: 1.7;
+    .polaroid {
+      background: white;
+      padding: 15px 15px 40px 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transform: rotate(-1deg);
+      transition: 0.3s;
+      border: 1px solid #eee;
     }
 
-    /* --- Skills --- */
-    ul.skills {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
+    .polaroid:nth-child(even) { transform: rotate(2deg); }
+    .polaroid:hover { transform: rotate(0deg) translateY(-10px); z-index: 5; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
 
-    ul.skills li {
-      background: #f7f6f9;
-      padding: 0.6rem 1rem;
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
-      font-size: 0.95rem;
-      transition: all 0.3s ease;
-    }
+    .project-title { font-weight: 700; color: var(--coffee); font-size: 1.1rem; }
+    .project-desc { font-size: 0.85rem; color: #666; margin-top: 5px; }
 
-    ul.skills li:hover {
-      background: var(--coffee);
-      color: #fff;
-      transform: translateY(-3px);
-    }
-
-    /* --- Projects --- */
-    .projects-list {
-      list-style: none;
-      padding-left: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .project-card {
-      background: #f8f8f8;
-      padding: 1.2rem 1.5rem;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-4px);
-      background: #fff6f1;
-      box-shadow: 0 8px 20px rgba(123, 92, 59, 0.15);
-    }
-
-    .project-title {
-      font-weight: 600;
-      color: var(--coffee);
-      margin-bottom: 0.3rem;
-      font-size: 1.05rem;
-    }
-
-    .project-desc {
-      font-size: 0.95rem;
-      color: #444;
-      line-height: 1.6;
-    }
-
-    /* --- Contact --- */
-    .contact-list {
-      list-style: none;
-      padding-left: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .contact-list li {
-      display: flex;
-      align-items: center;
-      font-size: 1rem;
-    }
-
-    .contact-icon {
-      margin-right: 0.8rem;
-      font-size: 1.3rem;
-      color: var(--coffee);
-    }
-
-    a {
-      color: var(--coffee);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    a:hover {
-      color: var(--light-coffee);
-      text-decoration: underline;
-    }
-
-    footer {
-      text-align: center;
-      color: #666;
+    /* --- Skills Tags --- */
+    .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-tag {
+      background: var(--paper);
+      border: 1px solid var(--latte);
+      padding: 5px 15px;
+      border-radius: 5px;
       font-size: 0.9rem;
-      margin: 2rem 0;
+      transition: 0.3s;
     }
+    .skill-tag:hover { background: var(--coffee); color: white; transform: translateY(-3px); }
 
-    /* --- Responsive --- */
-    @media (max-width: 768px) {
-      .main-container {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 1rem;
-      }
-      .info-section {
-        padding: 1.5rem;
-        align-items: center;
-      }
-      .name-main {
-        font-size: 2.2rem;
-      }
+    footer { padding: 3rem; font-size: 0.8rem; color: #999; }
+
+    @media (max-width: 600px) {
+      .main-container { width: 95vw; margin-top: 3rem; }
+      .name-main { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Intro Card -->
+  <div class="status-badge">📍 Interning @ PragICTS</div>
+
   <div class="main-container">
-    <div class="profile-section">
-      <div class="profile-img-circle">
-        <img src="https://media.licdn.com/dms/image/v2/D5603AQFUZ5-MeERdfQ/profile-displayphoto-shrink_400_400/B56ZRy3CbsHwAk-/0/1737093819233?e=2147483647&v=beta&t=nEtTmoutsWGW4bqduCZOj6oYrBK9GfPRiFlW2Mxw0JQ" alt="Profile Photo"/>
-      </div>
+    <div class="profile-img-circle">
+        <img src="YOUR_IMAGE_URL_HERE" alt="Pathushi"/>
     </div>
-    <div class="info-section">
-      <div class="name-main">Pathushi Munasinghe</div>
-      <div class="role-main">Software Engineering Undergraduate | Technology Enthusiast</div>
-      <div class="intro-main">
-        Welcome to my portfolio. Here, you'll find a curated selection of my work and projects, reflecting my passion for software engineering, problem-solving, and technology innovation.
-      </div>
-    </div>
+    <h1 class="name-main">Pathushi Munasinghe</h1>
+    <p class="handwritten">Explorer & Software Engineer</p>
+    <p style="max-width: 600px; color: #555;">
+      3rd Year Computing Undergraduate at NIBM | Turning caffeine into code and adventures into logic.
+    </p>
   </div>
 
   <section>
-    <h2>About Me</h2>
+    <h2>The Departure (About Me)</h2>
     <p>
-      I'm a third-year undergraduate pursuing a BSc (Hons) in Computing at Coventry University. Currently, I'm working as a Software Engineering Intern at PragICTS, where I continue to strengthen my technical and problem-solving skills.
-
-As a passionate technology enthusiast, I’m driven by innovation and creativity. I enjoy blending logic with imagination to craft impactful software solutions. Alongside my studies and internship, I’m also building my own startup, exploring ways to turn creative ideas into real-world technologies.
+      I’m currently navigating my 3rd year at NIBM while gaining real-world experience as a <b>Software Engineering Intern at PragICTS</b>. 
+      Whether I'm debugging a Spring Boot application or hunting for the best hidden cafe in Sri Lanka, I'm always looking for the next adventure.
     </p>
   </section>
 
   <section>
-    <h2>Skills</h2>
-    <h3 style="margin-top:0.5rem;">Technical Skills</h3>
-    <ul class="skills">
-      <li><strong>Languages:</strong> Java, C#, C++, SQL, PL/SQL, JavaScript, HTML, CSS, Python</li>
-      <li><strong>Frameworks & Tools:</strong> React, Spring Boot, Bootstrap, REST APIs, GitHub Actions</li>
-      <li><strong>Databases:</strong> Oracle, MongoDB, SQLite</li>
-      <li><strong>Concepts:</strong> OOP, Agile, Scrum, Machine Learning</li>
-    </ul>
-    <h3 style="margin-top:1.5rem;">Soft Skills</h3>
-    <ul class="skills">
-      <li>Teamwork</li>
-      <li>Time Management</li>
-      <li>Adaptability</li>
-      <li>Leadership</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Projects</h2>
-    <ul class="projects-list">
-      <li class="project-card"><div class="project-title">Machine Learning - Productivity Loss Prediction System</div><div class="project-desc">Trained a model using Random Forest (Python) to predict the productivity loss of social media users based on behavioral data.</div></li>
-      <li class="project-card"><div class="project-title">Locker Finder Tool</div><div class="project-desc">Developed a locker finder system for an amusement park using queue, Dijkstra, Kruskal, and DFS algorithms in Java to efficiently allocate lockers.</div></li>
-      <li class="project-card"><div class="project-title">Urbanfood E-commerce Platform</div><div class="project-desc">Developed a full-stack food sales platform using Spring Boot, Oracle DB, MongoDB, React, and JavaScript.</div></li>
-      <li class="project-card"><div class="project-title">Air Conditioning Contact Company Management System</div><div class="project-desc">Built a desktop application in C# for managing customer contacts, service scheduling, and billing.</div></li>
-      <li class="project-card"><div class="project-title">Robot Arm and Conveyor Belt System</div><div class="project-desc">Programmed a microcontroller-based system in C++ to automate object sorting and placement.</div></li>
-      <li class="project-card"><div class="project-title">Smart Locker Management System</div><div class="project-desc">Developing a smart locker system for universities and co-working spaces using IoT with React Native, React, Django, PostgreSQL, and Firebase.</div></li>
-      <li class="project-card"><div class="project-title">Machine Learning – Diabetic Prediction</div><div class="project-desc">Training a model to predict diabetic patients based on medical parameters.</div></li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Competitions</h2>
-    <ul class="projects-list">
-      <li class="project-card"><div class="project-title">Brainstorms – University of Moratuwa (Upto Semi Final Round)</div><div class="project-desc">Contributed to Aegle Platform, a healthcare solution for remote medical consultations.</div></li>
-      <li class="project-card"><div class="project-title">Idealize – University of Moratuwa (Upto Semi Final Round)</div><div class="project-desc">Developed a web app connecting startup founders with mentors and incubators.</div></li>
-      <li class="project-card"><div class="project-title">Neo Ventures – NIBM Startup Incubator</div><div class="project-desc">Designing an AI-powered travel platform to help users discover hidden destinations.</div></li>
-    </ul>
-  </section>
-
-  <section>
-  <h2>Startup</h2>
-  <div class="project-card" style="background:#fffaf6; border-left:6px solid var(--coffee);">
-    <div class="project-title">GroveNex Tech</div>
-    <div class="project-desc">
-      <p>
-        I’m one of the Co-Founders of <strong>GroveNex Tech</strong> — an emerging technology startup focused on building innovative digital solutions that bridge creativity and technology.  
-        Our mission is to design intelligent, scalable, and user-centric systems that empower businesses and individuals through automation and AI-driven applications.
-      </p>
-      <p>
-        Currently, we are developing cutting-edge software products and exploring AI-powered platforms aimed at revolutionizing user experience and operational efficiency.
-      </p>
-      <p>
-        🔗 Visit us on LinkedIn:  
-        <a href="https://www.linkedin.com/company/grovenextech/" target="_blank">
-          linkedin.com/company/grovenextech
-        </a>
-      </p>
+    <h2>Tech Destinations (Skills)</h2>
+    <div class="skills-container">
+      <span class="skill-tag">Java</span>
+      <span class="skill-tag">Python</span>
+      <span class="skill-tag">React</span>
+      <span class="skill-tag">Spring Boot</span>
+      <span class="skill-tag">Django</span>
+      <span class="skill-tag">Figma UI/UX</span>
+      <span class="skill-tag">SQL</span>
+      <span class="skill-tag">C#</span>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section>
+    <h2>Adventure Log (Projects)</h2>
+    <div class="projects-grid">
+      <div class="polaroid">
+        <div class="project-title">GroveNex Smart Locker</div>
+        <div class="project-desc">IoT-based security system using React & Django.</div>
+      </div>
+      <div class="polaroid">
+        <div class="project-title">Urbanfood E-com</div>
+        <div class="project-desc">Full-stack platform built with Spring Boot & Oracle.</div>
+      </div>
+      <div class="polaroid">
+        <div class="project-title">Locker Finder Algorithm</div>
+        <div class="project-desc">Solving park logistics using Dijkstra & Java.</div>
+      </div>
+    </div>
+  </section>
 
-<section>
-  <h2>Contact</h2>
-  <ul class="contact-list">
-    <li>
-      <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-      <a href="mailto:pathushi.m@gmail.com">pathushi.m@gmail.com</a>
-    </li>
-    <li>
-      <span class="contact-icon"><i class="fab fa-github"></i></span>
-      <a href="https://github.com/Pathushi" target="_blank">github.com/Pathushi</a>
-    </li>
-    <li>
-      <span class="contact-icon"><i class="fab fa-linkedin"></i></span>
-      <a href="https://www.linkedin.com/in/pathushi-munasinghe-758800312/" target="_blank">linkedin.com/in/pathushi-munasinghe</a>
-    </li>
-    <li>
-      <span class="contact-icon"><i class="fab fa-instagram"></i></span>
-      <a href="https://www.instagram.com/_pathushii_?igsh=MWdia2RpdXdzeTdzdw%3D%3D&utm_source=qr" target="_blank">instagram</a>
-    </li>
-  </ul>
-</section>
-
+  <section>
+    <h2>Let's Grab a Coffee?</h2>
+    <p>Looking for a collaborator or just want to talk tech and travel?</p>
+    <div style="font-size: 1.5rem; display: flex; gap: 20px; justify-content: center; margin-top: 20px;">
+      <a href="mailto:pathushi.m@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://linkedin.com/in/pathushi-munasinghe-758800312/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/Pathushi" target="_blank"><i class="fab fa-github"></i></a>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 Pathushi Munasinghe — All rights reserved.
+    &copy; 2026 Pathushi Munasinghe. Built with ☕ & Gatsby dreams.
   </footer>
 
 </body>
