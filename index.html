@@ -1,228 +1,231 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pathushi Munasinghe | Digital Journal</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --coffee: #6f4e37;
-      --latte: #e6ccb2;
-      --paper: #fffcf5;
-      --accent: #d4a373;
-      --text: #2b2118;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pathushi | 3rd Year Explorer</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Caveat:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --coffee: #6f4e37;
+        --latte: #e6ccb2;
+        --paper: #fffcf5;
+        --accent: #d4a373;
+      }
 
-    body {
-      margin: 0; padding: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #fdfaf5; /* Creamy paper background */
-      background-image: radial-gradient(#d4a37333 1px, transparent 1px);
-      background-size: 20px 20px; /* Subtle dot-grid paper feel */
-      color: var(--text);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Poppins", sans-serif;
+        background: #fdfaf5;
+        /* Traveler's Notebook dot grid */
+        background-image: radial-gradient(
+          var(--accent) 0.5px,
+          transparent 0.5px
+        );
+        background-size: 20px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #333;
+      }
 
-    /* --- Floating Badge --- */
-    .status-badge {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--coffee);
-      color: white;
-      padding: 5px 15px;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      animation: float 3s ease-in-out infinite;
-    }
+      /* Floating Status Badge */
+      .status-badge {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: var(--coffee);
+        color: white;
+        padding: 8px 15px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        z-index: 100;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+      .main-container {
+        background: white;
+        width: 90vw;
+        max-width: 800px;
+        margin-top: 5rem;
+        padding: 3rem;
+        border-radius: 15px;
+        box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        position: relative;
+      }
 
-    /* --- Main Profile --- */
-    .main-container {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 90vw;
-      max-width: 900px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
-      margin: 5rem 0 2rem;
-      padding: 3rem 1rem;
-      text-align: center;
-    }
+      /* Washi Tape Effect */
+      .main-container::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        left: 50%;
+        width: 120px;
+        height: 40px;
+        background: rgba(212, 163, 115, 0.5);
+        transform: translateX(-50%) rotate(-2deg);
+      }
 
-    /* Washi Tape Effect */
-    .main-container::before {
-      content: "";
-      position: absolute;
-      top: -15px;
-      width: 120px;
-      height: 40px;
-      background: rgba(212, 163, 115, 0.6);
-      transform: rotate(-2deg);
-      box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
-    }
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 6px solid white;
+        outline: 1px solid var(--latte);
+        margin-bottom: 1rem;
+        transition: 0.4s;
+        /* Critical for keeping image proportions */
+        object-fit: cover;
+        object-position: center;
+      }
 
-    .profile-img-circle {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 5px solid white;
-      outline: 2px solid var(--latte);
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-      transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    
-    .profile-img-circle:hover { transform: scale(1.1) rotate(3deg); }
-    .profile-img-circle img { width: 100%; height: 100%; object-fit: cover; }
+      .profile-img:hover {
+        transform: rotate(5deg) scale(1.05);
+      }
 
-    .name-main { font-size: 2.5rem; color: var(--coffee); font-weight: 700; margin: 0; }
-    .handwritten { font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--accent); margin-top: -10px; }
+      h1 {
+        color: var(--coffee);
+        margin-bottom: 0;
+        font-size: 2.5rem;
+      }
 
-    /* --- Sections as Scrapbook Pages --- */
-    section {
-      width: 90%;
-      max-width: 800px;
-      margin: 2rem auto;
-      background: white;
-      padding: 2.5rem;
-      border-radius: 2px;
-      box-shadow: 2px 2px 15px rgba(0,0,0,0.05);
-      position: relative;
-      border-left: 5px solid var(--latte);
-    }
+      .subtitle {
+        font-family: "Caveat", cursive;
+        font-size: 1.8rem;
+        color: var(--accent);
+        margin-top: -5px;
+      }
 
-    h2 {
-      font-size: 1.8rem;
-      color: var(--coffee);
-      border-bottom: 2px dashed var(--latte);
-      display: inline-block;
-      margin-bottom: 1.5rem;
-    }
+      .vibe-tags {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+      }
 
-    /* --- Project Polaroids --- */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+      .tag {
+        background: #efe9e2;
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        color: var(--coffee);
+        font-weight: 600;
+      }
 
-    .polaroid {
-      background: white;
-      padding: 15px 15px 40px 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      transform: rotate(-1deg);
-      transition: 0.3s;
-      border: 1px solid #eee;
-    }
+      section {
+        width: 90vw;
+        max-width: 800px;
+        background: white;
+        margin: 2rem 0;
+        padding: 2rem;
+        border-radius: 10px;
+        border-left: 5px solid var(--coffee);
+      }
 
-    .polaroid:nth-child(even) { transform: rotate(2deg); }
-    .polaroid:hover { transform: rotate(0deg) translateY(-10px); z-index: 5; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+      h2 {
+        color: var(--coffee);
+        margin-top: 0;
+      }
 
-    .project-title { font-weight: 700; color: var(--coffee); font-size: 1.1rem; }
-    .project-desc { font-size: 0.85rem; color: #666; margin-top: 5px; }
+      .project-card {
+        background: #fafafa;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        border: 1px solid #eee;
+        transition: 0.3s;
+      }
 
-    /* --- Skills Tags --- */
-    .skills-container { display: flex; flex-wrap: wrap; gap: 10px; }
-    .skill-tag {
-      background: var(--paper);
-      border: 1px solid var(--latte);
-      padding: 5px 15px;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      transition: 0.3s;
-    }
-    .skill-tag:hover { background: var(--coffee); color: white; transform: translateY(-3px); }
+      .project-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
 
-    footer { padding: 3rem; font-size: 0.8rem; color: #999; }
+      a {
+        color: var(--coffee);
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+      }
 
-    @media (max-width: 600px) {
-      .main-container { width: 95vw; margin-top: 3rem; }
-      .name-main { font-size: 1.8rem; }
-    }
-  </style>
-</head>
-<body>
+      a:hover {
+        color: var(--accent);
+      }
 
-  <div class="status-badge">📍 Interning @ PragICTS</div>
+      footer {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="status-badge">📍 Interning @ PragICTS</div>
 
-  <div class="main-container">
-    <div class="profile-img-circle">
-        <img src="YOUR_IMAGE_URL_HERE" alt="Pathushi"/>
-    </div>
-    <h1 class="name-main">Pathushi Munasinghe</h1>
-    <p class="handwritten">Explorer & Software Engineer</p>
-    <p style="max-width: 600px; color: #555;">
-      3rd Year Computing Undergraduate at NIBM | Turning caffeine into code and adventures into logic.
-    </p>
-  </div>
+    <div class="main-container">
+      <img src="profile.jpeg" class="profile-img" alt="Pathushi" />
+      <h1>Pathushi Munasinghe</h1>
+      <div class="subtitle">3rd Year Undergrad | Cafe Lover | Adventurer</div>
 
-  <section>
-    <h2>The Departure (About Me)</h2>
-    <p>
-      I’m currently navigating my 3rd year at NIBM while gaining real-world experience as a <b>Software Engineering Intern at PragICTS</b>. 
-      Whether I'm debugging a Spring Boot application or hunting for the best hidden cafe in Sri Lanka, I'm always looking for the next adventure.
-    </p>
-  </section>
-
-  <section>
-    <h2>Tech Destinations (Skills)</h2>
-    <div class="skills-container">
-      <span class="skill-tag">Java</span>
-      <span class="skill-tag">Python</span>
-      <span class="skill-tag">React</span>
-      <span class="skill-tag">Spring Boot</span>
-      <span class="skill-tag">Django</span>
-      <span class="skill-tag">Figma UI/UX</span>
-      <span class="skill-tag">SQL</span>
-      <span class="skill-tag">C#</span>
-    </div>
-  </section>
-
-  <section>
-    <h2>Adventure Log (Projects)</h2>
-    <div class="projects-grid">
-      <div class="polaroid">
-        <div class="project-title">GroveNex Smart Locker</div>
-        <div class="project-desc">IoT-based security system using React & Django.</div>
+      <div class="vibe-tags">
+        <span class="tag">☕ Iced Latte Enthusiast</span>
+        <span class="tag">🗺️ Trail Seeker</span>
+        <span class="tag">✨ Positive Vibes Only</span>
       </div>
-      <div class="polaroid">
-        <div class="project-title">Urbanfood E-com</div>
-        <div class="project-desc">Full-stack platform built with Spring Boot & Oracle.</div>
-      </div>
-      <div class="polaroid">
-        <div class="project-title">Locker Finder Algorithm</div>
-        <div class="project-desc">Solving park logistics using Dijkstra & Java.</div>
-      </div>
+
+      <p style="margin-top: 20px; line-height: 1.6">
+        Building smart solutions at <b>PragICTS</b> and exploring the world one
+        cafe at a time. I believe in blending logic with creativity.
+      </p>
     </div>
-  </section>
 
-  <section>
-    <h2>Let's Grab a Coffee?</h2>
-    <p>Looking for a collaborator or just want to talk tech and travel?</p>
-    <div style="font-size: 1.5rem; display: flex; gap: 20px; justify-content: center; margin-top: 20px;">
-      <a href="mailto:pathushi.m@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://linkedin.com/in/pathushi-munasinghe-758800312/" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="https://github.com/Pathushi" target="_blank"><i class="fab fa-github"></i></a>
-    </div>
-  </section>
+    <section>
+      <h2>Currently Brewing ☕</h2>
+      <div class="project-card">
+        <strong>GroveNex Tech</strong>
+        <p>
+          Co-Founder | Building AI-driven digital solutions and smart locker
+          systems for modern spaces.
+        </p>
+      </div>
+      <div class="project-card">
+        <strong>E-commerce Research</strong>
+        <p>
+          Analyzing landscape assessments at PragICTS to optimize user
+          experience and market efficiency.
+        </p>
+      </div>
+    </section>
 
-  <footer>
-    &copy; 2026 Pathushi Munasinghe. Built with ☕ & Gatsby dreams.
-  </footer>
-
-</body>
+    <footer>
+      <p>Let's hang out! <a href="mailto:pathushi.m@gmail.com">Email Me</a></p>
+      <div
+        style="
+          font-size: 1.2rem;
+          display: flex;
+          gap: 15px;
+          justify-content: center;
+        "
+      >
+        <a href="https://github.com/Pathushi" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a
+          href="https://www.linkedin.com/in/pathushi-munasinghe-758800312/"
+          target="_blank"
+          ><i class="fab fa-linkedin"></i
+        ></a>
+      </div>
+    </footer>
+  </body>
 </html>
